@@ -28,9 +28,15 @@ public class CadastrarPedido extends JFrame {
 	    });
 	    
 	    btverPedido = new JButton();
-	    btverPedido.setText("Ver compras");
+	    btverPedido.setText("Ver carrinho");
 	    btverPedido.setBounds(300,150,250,80);	    
 	    add(btverPedido);
-	}
+	    
+//	    btverPedido.addActionListener((ActionListener) new ActionListener() {
+//	    	public void actionPerformed(ActionEvent e) {
+//    			
+//    		}
+//	    });
+}
 	
 }

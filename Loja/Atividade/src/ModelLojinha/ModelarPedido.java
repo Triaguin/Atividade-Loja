@@ -5,6 +5,14 @@ public class ModelarPedido {
 	private int idPedido;
 	private String dataPedido;
 	private String statusPedido;
+	private Double valorPedido;
+	
+	public Double getValorPedido() {
+		return valorPedido;
+	}
+	public void setValorPedido(Double valorPedido) {
+		this.valorPedido = valorPedido;
+	}
 	public int getIdPedido() {
 		return idPedido;
 	}

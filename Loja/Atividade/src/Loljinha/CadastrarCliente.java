@@ -2,9 +2,12 @@ package Loljinha;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+
 import javax.swing.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import DAOLojinha.CategoriaDAO;
 import DAOLojinha.ClienteDAO;
@@ -169,11 +172,11 @@ public class CadastrarCliente extends JFrame {
 		btTelefoneCliente.setBounds(350, 635, 200 , 35);
 		add(btTelefoneCliente);
 		
-		btTelefoneCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evento) {
-				CadastrarTelefone novoTelefone = new CadastrarTelefone();
-				novoTelefone.setVisible(true);
-			}
+	btTelefoneCliente.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evento) {
+			CadastrarTelefone novoTelefone = new CadastrarTelefone();
+			novoTelefone.setVisible(true);
+		}
 		});
 		
 		// Botao Cadastrar
@@ -205,11 +208,13 @@ public class CadastrarCliente extends JFrame {
 					int mesNasc = Integer.parseInt(txMesNascCliente.getText());
 					int anoNasc = Integer.parseInt(txAnoNascCliente.getText());
 					
-					LocalDate datanasc = LocalDate.of(anoNasc, mesNasc , diaNasc); // Une o dia com o mes, o mes com o ano
-					DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/mmm/yyyy"); // Converte a data
+					System.out.println(diaNasc + " " + mesNasc + " " + anoNasc);
 					
-					cliente.setDatanascCliente(datanasc.format(dtf)); 
-					System.out.println(cliente.getDatanascCliente());
+					Calendar data = Calendar.getInstance();
+					
+					data.set(anoNasc, mesNasc, diaNasc);
+					
+					cliente.setDatanasc(data);
 
 					String cpf = txCpfCliente.getText(); //Le o CPF
 					
@@ -224,24 +229,24 @@ public class CadastrarCliente extends JFrame {
 						System.out.println(cliente.getCpfCliente());
 					}
 
-					String sexo;
+					int sexo;
 
 					if (rdHomem.isSelected()) {  //Ve qual o sexo do cliente
 
-						sexo = "Nasculino";
+						sexo = 1;
 						
 						cliente.setSexoCliente(sexo);
 						System.out.println(cliente.getSexoCliente());
 
 					} else if (rdMulher.isSelected()) {
 
-						sexo = "Feminino";
+						sexo = 2;
 						
 						cliente.setSexoCliente(sexo);
 						System.out.println(cliente.getSexoCliente());
 						
 					} else if (rdOutro.isSelected()) {
-						sexo = "Outro";
+						sexo = 3;
 						
 						cliente.setSexoCliente(sexo);
 						System.out.println(cliente.getSexoCliente());
@@ -266,13 +271,14 @@ public class CadastrarCliente extends JFrame {
 						cliente.setLogradouroCliente(logradouro);
 						System.out.println(cliente.getLogradouroCliente());
 					}
+						cliente.setNumLogradouroCliente(numLogr); // Coloca o numero de logradouro (se n tiver um ja vai ter dado erro)
 					if (bairro.equals("")) { //Se o bairro nao foi colocado nao cadastra o cliente
 
 						JOptionPane.showMessageDialog(null, "Insira um Bairro");
 						return;
 
 					}else {
-						cliente.setNumLogradouroCliente(numLogr);
+						cliente.setBairroCliente(bairro);
 						System.out.println(cliente.getNumLogradouroCliente());
 					}
 					if (cidade.equals("")) { // Se a cidade nao foi colocado nao cadastra o cliente
@@ -281,7 +287,7 @@ public class CadastrarCliente extends JFrame {
 						return;
 
 					}else {
-						cliente.setNomeCliente(cidade);
+						cliente.setCidadeCliente(cidade);
 						System.out.println(cliente.getCidadeCliente());
 					}
 					
@@ -292,6 +298,8 @@ public class CadastrarCliente extends JFrame {
 							cadastrarCliente(nome, diaNasc, mesNasc, anoNasc, cpf, sexo, logradouro, numLogr, bairro,
 									cidade) ? "Cliente " + nome + " Cadastrada Com Sucesso"
 											: "Cliente " + nome + " Nao Cadastrada Com Sucesso"); // cadastra o cliente e mostra o resultado
+					
+					System.out.println(telefone.getTelefone());
 
 				} catch (Exception execao) { // Se deu erro fala que deu erro (sem estoura o programa)
 					JOptionPane.showMessageDialog(null, "Erro no Cadastro do Cliente");
@@ -302,7 +310,7 @@ public class CadastrarCliente extends JFrame {
 		add(btCadastrarCliente);
 	}
 
-	public boolean cadastrarCliente(String nome, int diaNasc, int mesNasc, int AnoNasc, String cpf, String sexo,
+	public boolean cadastrarCliente(String nome, int diaNasc, int mesNasc, int AnoNasc, String cpf, int sexo,
 			String logradouro, int numLogr, String bairro, String cidade) {  // Supostamente cadastra o cliente mas nao faz nada ainda
 		return true;
 	}

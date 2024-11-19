@@ -1,16 +1,19 @@
 package ModelLojinha;
 
+import java.util.Calendar;
+
 public class ModelarCliente {
 	
 	private int idCliente;
 	private String nomeCliente;
-	private String datanascCliente;
+	private Calendar datanasc;
 	private String cpfCliente;
-	private String sexoCliente;
+	private int sexoCliente;
 	private String logradouroCliente;
 	private int numLogradouroCliente;
 	private String bairroCliente;
 	private String cidadeCliente;
+	
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -23,11 +26,11 @@ public class ModelarCliente {
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
 	}
-	public String getDatanascCliente() {
-		return datanascCliente;
+	public Calendar getDatanasc() {
+		return datanasc;
 	}
-	public void setDatanascCliente(String datanascCliente) {
-		this.datanascCliente = datanascCliente;
+	public void setDatanasc(Calendar datanascCliente) {
+		this.datanasc = datanascCliente;
 	}
 	public String getCpfCliente() {
 		return cpfCliente;
@@ -35,10 +38,10 @@ public class ModelarCliente {
 	public void setCpfCliente(String cpfCliente) {
 		this.cpfCliente = cpfCliente;
 	}
-	public String getSexoCliente() {
+	public int getSexoCliente() {
 		return sexoCliente;
 	}
-	public void setSexoCliente(String sexoCliente) {
+	public void setSexoCliente(int sexoCliente) {
 		this.sexoCliente = sexoCliente;
 	}
 	public String getLogradouroCliente() {

@@ -125,11 +125,163 @@ public class Menu extends JFrame {
 
 			cadastrar.add(pedido);
 
+			// Cria o menu Consultar
+			JMenu consultar = new JMenu("Consultar");
+			barra.add(consultar);
+
+			// Cria o item categoria
+			JMenuItem consultarCategoria = new JMenuItem("Categoria");
+			consultarCategoria.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					CadastrarCategoria consultarCategoria = new CadastrarCategoria();
+					consultarCategoria.setVisible(true);
+				}
+			});
+
+			consultar.add(consultarCategoria);
+
+			// Cria o item Produto
+			JMenuItem consultarProduto = new JMenuItem("Produto");
+			consultarProduto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+//					 CadastrarProduto consultarProduto;
+//					try {
+//						consultarProduto = new CadastrarProduto();
+//					} catch (SQLException e) {
+//						throw new RuntimeException();
+//					}
+//					consultarProduto.setVisible(true);
+				}
+			});
+			consultar.add(consultarProduto);
+
+			// Cria o item cliente
+			JMenuItem consultarCliente = new JMenuItem("Cliente");
+			consultarCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					// CadastrarCliente consultarCliente = new CadastrarCliente();
+					// consultarCliente.setVisible(true);
+				}
+			});
+			consultar.add(consultarCliente);
+
+			// Cria o item pedidos
+			JMenuItem consultarPedido = new JMenuItem("Pedido");
+			consultarPedido.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					// CadastrarPedido consultarPedido = new CadastrarPedido();
+					// consultarPedido.setVisible(true);
+				}
+			});
+			consultar.add(consultarPedido);
+
+			// Cria o menu Alterar
+			JMenu alterar = new JMenu("Alterar");
+			barra.add(alterar);
+
+			// Cria o item categoria
+			JMenuItem alterarCategoria = new JMenuItem("Categoria");
+			alterarCategoria.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					CadastrarCategoria alterarCategoria = new CadastrarCategoria();
+					alterarCategoria.setVisible(true);
+				}
+			});
+
+			alterar.add(alterarCategoria);
+
+			// Cria o item Produto
+			JMenuItem alterarProduto = new JMenuItem("Produto");
+			alterarProduto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+//					CadastrarProduto alterarProduto;
+//					try {
+//						 alterarProduto = new CadastrarProduto();
+//					} catch (SQLException e) {
+//						throw new RuntimeException();
+//					}
+//					alterarProduto.setVisible(true);
+				}
+			});
+			alterar.add(alterarProduto);
+
+			// Cria o item cliente
+			JMenuItem alterarCliente = new JMenuItem("Cliente");
+			alterarCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					// CadastrarCliente alterarCliente = new CadastrarCliente();
+					// alterarCliente.setVisible(true);
+				}
+			});
+			alterar.add(alterarCliente);
+
+			// Cria o item pedidos
+			JMenuItem alterarPedido = new JMenuItem("Pedido");
+			alterarPedido.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					// CadastrarPedido alterarPedido = new CadastrarPedido();
+					// alterarPedido.setVisible(true);
+				}
+			});
+			alterar.add(alterarPedido);
+
+			// Cria o menu Excluir
+			JMenu excluir = new JMenu("Excluir");
+			barra.add(excluir);
+
+			// Cria o item categoria
+			JMenuItem excluirCategoria = new JMenuItem("Categoria");
+			excluirCategoria.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					CadastrarCategoria excluirCategoria = new CadastrarCategoria();
+					excluirCategoria.setVisible(true);
+				}
+			});
+
+			excluir.add(excluirCategoria);
+
+			// Cria o item Produto
+			JMenuItem excluirProduto = new JMenuItem("Produto");
+			excluirProduto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+//					CadastrarProduto excluirProduto;
+//					try {
+//						 excluirProduto = new CadastrarProduto();
+//					} catch (SQLException e) {
+//						throw new RuntimeException();
+//					}
+//					excluirProduto.setVisible(true);
+				}
+			});
+			excluir.add(excluirProduto);
+
+			// Cria o item cliente
+			JMenuItem excluirCliente = new JMenuItem("Cliente");
+			excluirCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					// CadastrarCliente excluirCliente = new CadastrarCliente();
+					// excluirCliente.setVisible(true);
+				}
+			});
+			excluir.add(excluirCliente);
+
+			// Cria o item pedidos
+			JMenuItem excluirPedido = new JMenuItem("Pedido");
+			excluirPedido.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					// CadastrarPedido excluirPedido = new CadastrarPedido();
+					// excluirPedido.setVisible(true);
+				}
+			});
+			excluir.add(excluirPedido);
+
+			
+			
 			// Cria o menu ajuda
 			JMenu ajuda = new JMenu("Ajuda");
 			barra.add(ajuda);
 
-			// Cria o item categoria
+			// Cria o item Sobre
 			JMenuItem sobre = new JMenuItem("Sobre");
 			sobre.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {

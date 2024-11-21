@@ -7,7 +7,8 @@ import java.beans.PropertyChangeListener;
 import javax.swing.*;
 public class TelaSobre extends JFrame {
 	
-	private JButton btsobre;
+	private JLabel lbLeonardo;
+	private JLabel lbTiago;
 	
 	public TelaSobre() {		
 		this.setTitle("Sobre");
@@ -16,18 +17,15 @@ public class TelaSobre extends JFrame {
 	    this.setLocationRelativeTo(null);		
 	    setLayout(null);
 	    
-	    btsobre = new JButton();
-	    btsobre.setText("Ver sobre a gente ");
-	    btsobre.setBounds(350,200,200,100);
-	    add(btsobre);
+	    lbLeonardo = new JLabel();
+	    lbLeonardo.setText("Feito por Leonardo Lima de Souza Loper N 28");
+	    lbLeonardo.setBounds(300, 250, 300, 15);
+	    add(lbLeonardo);
 	    
-	    btsobre.addActionListener(new ActionListener() {
-	    	
-	    	public void actionPerformed(ActionEvent e) {
-	    		JOptionPane.showMessageDialog(null, "lol");
-	    	}
-	    	
-	    });
+	    lbTiago = new JLabel();
+	    lbTiago.setText("e Tiago Soares de Magalhaes N 40");
+	    lbTiago.setBounds(300, 270, 300, 15);
+	    add(lbTiago);
 	    
 	}
 }

@@ -35,7 +35,7 @@ CREATE TABLE tbProduto (
     , nomeProduto VARCHAR (60)
     , precoProduto FLOAT
     , quantidadeProduto INT
-    , idCategoria INT  FOREIGN KEY (idCategoria) REFERENCES tbCategoria(idCategoria)
+    , idCategoria INT , FOREIGN KEY (idCategoria) REFERENCES tbCategoria(idCategoria)
 );
 
 CREATE TABLE tbPedido (

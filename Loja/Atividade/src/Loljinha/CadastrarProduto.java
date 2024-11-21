@@ -11,7 +11,6 @@ import javax.swing.*;
 
 import ModelLojinha.ModelarProduto;
 import ModelLojinha.ModelarCategoria;
-import ModelLojinha.ModelarEstoque;
 import DAOLojinha.CategoriaDAO;
 import DAOLojinha.ProdutoDAO;
 
@@ -121,7 +120,8 @@ public class CadastrarProduto extends JFrame {
 					int qtProduto = Integer.parseInt(txQuantidadeProduto.getText());
 //					Estoque.setQuantidadeEstoqueProduto(qtProduto);
 					Produto.setQuantidadeProduto(qtProduto);
-					salvarProduto.adicionarEstoque( Produto);
+					
+					
 					
 					
 

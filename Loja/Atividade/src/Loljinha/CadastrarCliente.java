@@ -48,9 +48,7 @@ public class CadastrarCliente extends JFrame {
 	private JButton btCadastrarCliente;
 
 	ModelarCliente cliente = new ModelarCliente();
-	ClienteDAO salvarCliente = new ClienteDAO();
 	ModelarTelefone telefone = new ModelarTelefone();
-	TelefoneDAO salvarTelefone = new TelefoneDAO();
 	
 	public CadastrarCliente() {
 
@@ -291,8 +289,8 @@ public class CadastrarCliente extends JFrame {
 						System.out.println(cliente.getCidadeCliente());
 					}
 					
-					salvarCliente.adicionarCategoria(cliente);
-					salvarTelefone.adicionarTelefone(telefone, cliente);
+					new ClienteDAO().adicionarCategoria(cliente);
+					new TelefoneDAO().adicionarTelefone(telefone, cliente);
 					
 					JOptionPane.showMessageDialog(null,
 							cadastrarCliente(nome, diaNasc, mesNasc, anoNasc, cpf, sexo, logradouro, numLogr, bairro,

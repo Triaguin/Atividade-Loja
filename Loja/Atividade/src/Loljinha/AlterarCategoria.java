@@ -10,15 +10,16 @@ import javax.swing.*;
 import ModelLojinha.ModelarCategoria;
 import DAOLojinha.CategoriaDAO;
 
-public class CadastrarCategoria extends JFrame {
+public class AlterarCategoria extends JFrame {
 
 	private JLabel lbCategoria;
 	private JTextField txCategoria;
 	private JButton btCadastrarCategoria;
 
 	ModelarCategoria categoria = new ModelarCategoria();
+	CategoriaDAO salvarCategoria = new CategoriaDAO();
 	
-	public CadastrarCategoria() {
+	public AlterarCategoria() {
 
 		setTitle("Cadastrar Categoria");
 		setSize(900, 600);
@@ -47,7 +48,7 @@ public class CadastrarCategoria extends JFrame {
 				try {
 					String cg = txCategoria.getText();
 					categoria.setNomeCategoria(cg);
-					new CategoriaDAO().adicionarCategoria(categoria);
+					salvarCategoria.adicionarCategoria(categoria);
 					JOptionPane.showMessageDialog(null, cadastrarCategoria(cg) ? "Categoria: " + cg + " Cadastrada Com Sucesso" : "Categoria " + cg + " Nao Cadastrada Com Sucesso");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

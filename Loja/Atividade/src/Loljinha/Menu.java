@@ -133,7 +133,12 @@ public class Menu extends JFrame {
 			JMenuItem consultarCategoria = new JMenuItem("Categoria");
 			consultarCategoria.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					CadastrarCategoria consultarCategoria = new CadastrarCategoria();
+					ConsultarCategoria consultarCategoria;
+					try {
+						consultarCategoria = new ConsultarCategoria();
+					} catch (SQLException e) {
+						throw new RuntimeException();
+					}
 					consultarCategoria.setVisible(true);
 				}
 			});
@@ -144,7 +149,7 @@ public class Menu extends JFrame {
 			JMenuItem consultarProduto = new JMenuItem("Produto");
 			consultarProduto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-//					 CadastrarProduto consultarProduto;
+//					CadastrarProduto consultarProduto;
 //					try {
 //						consultarProduto = new CadastrarProduto();
 //					} catch (SQLException e) {
@@ -159,8 +164,13 @@ public class Menu extends JFrame {
 			JMenuItem consultarCliente = new JMenuItem("Cliente");
 			consultarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					// CadastrarCliente consultarCliente = new CadastrarCliente();
-					// consultarCliente.setVisible(true);
+					ConsultarCliente consultarCliente;
+					try {
+						consultarCliente = new ConsultarCliente();
+					} catch (SQLException e) {
+						throw new RuntimeException();
+					}
+					 consultarCliente.setVisible(true);
 				}
 			});
 			consultar.add(consultarCliente);
@@ -169,7 +179,7 @@ public class Menu extends JFrame {
 			JMenuItem consultarPedido = new JMenuItem("Pedido");
 			consultarPedido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					// CadastrarPedido consultarPedido = new CadastrarPedido();
+					// ConsultarPedido consultarPedido = new ConsultarPedido();
 					// consultarPedido.setVisible(true);
 				}
 			});
@@ -183,7 +193,7 @@ public class Menu extends JFrame {
 			JMenuItem alterarCategoria = new JMenuItem("Categoria");
 			alterarCategoria.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					CadastrarCategoria alterarCategoria = new CadastrarCategoria();
+					AlterarCategoria alterarCategoria = new AlterarCategoria();
 					alterarCategoria.setVisible(true);
 				}
 			});
@@ -194,9 +204,9 @@ public class Menu extends JFrame {
 			JMenuItem alterarProduto = new JMenuItem("Produto");
 			alterarProduto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-//					CadastrarProduto alterarProduto;
+//					AlterarProduto alterarProduto;
 //					try {
-//						 alterarProduto = new CadastrarProduto();
+//						 alterarProduto = new AlterarProduto();
 //					} catch (SQLException e) {
 //						throw new RuntimeException();
 //					}
@@ -209,7 +219,7 @@ public class Menu extends JFrame {
 			JMenuItem alterarCliente = new JMenuItem("Cliente");
 			alterarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					// CadastrarCliente alterarCliente = new CadastrarCliente();
+					// AlterarCliente alterarCliente = new AlterarCliente();
 					// alterarCliente.setVisible(true);
 				}
 			});
@@ -219,7 +229,7 @@ public class Menu extends JFrame {
 			JMenuItem alterarPedido = new JMenuItem("Pedido");
 			alterarPedido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					// CadastrarPedido alterarPedido = new CadastrarPedido();
+					// AlterarPedido alterarPedido = new AlterarPedido();
 					// alterarPedido.setVisible(true);
 				}
 			});
@@ -233,7 +243,7 @@ public class Menu extends JFrame {
 			JMenuItem excluirCategoria = new JMenuItem("Categoria");
 			excluirCategoria.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					CadastrarCategoria excluirCategoria = new CadastrarCategoria();
+					ExcluirCategoria excluirCategoria = new ExcluirCategoria();
 					excluirCategoria.setVisible(true);
 				}
 			});
@@ -244,9 +254,9 @@ public class Menu extends JFrame {
 			JMenuItem excluirProduto = new JMenuItem("Produto");
 			excluirProduto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-//					CadastrarProduto excluirProduto;
+//					ExcluirProduto excluirProduto;
 //					try {
-//						 excluirProduto = new CadastrarProduto();
+//						 excluirProduto = new ExcluirProduto();
 //					} catch (SQLException e) {
 //						throw new RuntimeException();
 //					}
@@ -259,7 +269,7 @@ public class Menu extends JFrame {
 			JMenuItem excluirCliente = new JMenuItem("Cliente");
 			excluirCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					// CadastrarCliente excluirCliente = new CadastrarCliente();
+					// ExcluirCliente excluirCliente = new ExcluirCliente();
 					// excluirCliente.setVisible(true);
 				}
 			});
@@ -269,7 +279,7 @@ public class Menu extends JFrame {
 			JMenuItem excluirPedido = new JMenuItem("Pedido");
 			excluirPedido.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					// CadastrarPedido excluirPedido = new CadastrarPedido();
+					// ExcluirPedido excluirPedido = new ExcluirPedido();
 					// excluirPedido.setVisible(true);
 				}
 			});

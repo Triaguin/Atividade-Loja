@@ -99,34 +99,50 @@ public class CadastrarProduto extends JFrame {
 
 				try { // Tenta fazer o codigo (se der erro ele manda pro catch)
 
-					String nome = txNomeProduto.getText(); // Le o nome
+					String nomeProduto = txNomeProduto.getText(); // Le o nome
 
-					if (nome.equals("")) { // Se o nome nao foi colocado nao cadastra o Produto
+					if (nomeProduto.equals("")) { // Se o nome nao foi colocado nao cadastra o Produto
 
 						JOptionPane.showMessageDialog(null, "Insira um Nome");
 						return;
 
 					}else {
-//						Estoque.setNomeEstoqueProduto(nome); //Adiciona o nome do tipo produto
-						Produto.setNomeProduto(nome);
+						Produto.setNomeProduto(nomeProduto);
+						System.out.println(nomeProduto);
 					}
-
+					
 					double preco = Double.parseDouble(txPrecoProduto.getText()); // Le o Preco
-					Produto.setValorProduto(preco);;
+					if (preco == 0) { // Se o nome nao foi colocado nao cadastra o Produto
+
+						JOptionPane.showMessageDialog(null, "Insira um valor positivo");
+						return;
+
+					}else {
+						Produto.setValorProduto(preco);
+						System.out.println(preco);
+					}
+					
 
 					int idCategoria = (int) categorias.get(cbCategoriaProduto.getSelectedIndex()).getIdCategoria(); // Le a Categoria
 					categoria.setIdCategoria(idCategoria);
+					System.out.println(idCategoria);
 					
 					int qtProduto = Integer.parseInt(txQuantidadeProduto.getText());
-//					Estoque.setQuantidadeEstoqueProduto(qtProduto);
-					Produto.setQuantidadeProduto(qtProduto);
-					
-					
-					
-					
+					if (qtProduto == 0) { // Se o nome nao foi colocado nao cadastra o Produto
 
-					JOptionPane.showMessageDialog(null, cadastrarProduto(nome, preco, idCategoria) ? "Produto " + nome + " Cadastrada Com Sucesso"
-											: "Produto " + nome + " Nao Cadastrada Com Sucesso"); // cadastra o Produto
+						JOptionPane.showMessageDialog(null, "Insira uma quantidade de produtos");
+						return;
+
+					}else {
+						Produto.setQuantidadeProduto(qtProduto);
+						System.out.println(qtProduto);
+					}
+					
+					
+					salvarProduto.adicionarEstoque(Produto, categoria);
+
+					JOptionPane.showMessageDialog(null, cadastrarProduto(nomeProduto, preco, idCategoria) ? "Produto " + nomeProduto + " Cadastrada Com Sucesso"
+											: "Produto " + nomeProduto + " Nao Cadastrada Com Sucesso"); // cadastra o Produto
 																									// e mostra o
 																									// resultado
 

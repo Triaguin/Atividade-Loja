@@ -28,16 +28,16 @@ public class CadastrarCategoria extends JFrame {
 
 		lbCategoria = new JLabel();
 		lbCategoria.setText("Categoria: ");
-		lbCategoria.setBounds(415, 220, 70, 15);
+		lbCategoria.setBounds(350, 220, 70, 15);
 		add(lbCategoria);
 
 		txCategoria = new JTextField();
-		txCategoria.setBounds(350, 260, 200, 35);
+		txCategoria.setBounds(350, 240, 200, 35);
 		add(txCategoria);
 
 		btCadastrarCategoria = new JButton();
 		btCadastrarCategoria.setText("Cadastrar");
-		btCadastrarCategoria.setBounds(400, 325, 100, 35);
+		btCadastrarCategoria.setBounds(400, 285, 100, 35);
 
 		btCadastrarCategoria.addActionListener(new ActionListener() {
 

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import ModelLojinha.ModelarCategoria;
@@ -27,12 +28,6 @@ public class ClienteDAO {
 
 			java.sql.Date datasql = new java.sql.Date(Cliente.getDatanasc().getTime().getTime());
 			datasql.setMonth((datasql.getMonth() - 1) % 12);
-
-			System.out.println("Nome: " + Cliente.getNomeCliente() + " Dia " + datasql.getDate() + " Mes "
-					+ datasql.getMonth() + " Ano " + datasql.getYear() + " CPF: " + Cliente.getCpfCliente() + " Sexo: "
-					+ Cliente.getSexoCliente() + " Logr: " + Cliente.getLogradouroCliente() + " N: "
-					+ Cliente.getNumLogradouroCliente() + " Bairro: " + Cliente.getBairroCliente() + " Cidade: "
-					+ Cliente.getCidadeCliente());
 
 			stmt.setString(1, Cliente.getNomeCliente());
 			stmt.setDate(2, datasql);
@@ -77,8 +72,6 @@ public class ClienteDAO {
 				
 				Calendar dataNasc = Calendar.getInstance();
 				dataNasc.setTime(rs.getDate(3));
-				System.out.println(rs.getDate(3));
-				System.out.println(dataNasc.DATE + "/" + dataNasc.MONTH + "/" + dataNasc.YEAR);
 
 				// Adiciona as informacoes da clientes
 				cliente.setIdCliente(rs.getInt(1));

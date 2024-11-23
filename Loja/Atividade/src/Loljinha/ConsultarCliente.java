@@ -14,24 +14,23 @@ import DAOLojinha.ClienteDAO;
 public class ConsultarCliente extends JFrame {
 
 	private JScrollPane scrollTabela;
-	private JTable tabelaCategoria;
+	private JTable tabelaCliente;
 	private String[] atributos;
 	Object[][] dados;
 
-	ModelarCliente categoria = new ModelarCliente();
-	ClienteDAO salvarCategoria = new ClienteDAO();
+	ModelarCliente cliente = new ModelarCliente();
+	ClienteDAO salvarCliente = new ClienteDAO();
 	
 	public ConsultarCliente() throws SQLException {
 
 		setTitle("Consultar Cliente");
 		setSize(900, 600);
-	    this.setResizable(false);
 		setLocationRelativeTo(null);
 
 		atributos = new String[] {"Nome", "Data Nascimento", "CPF", "Sexo", "Logradouro", "Número de Logradouro", "Bairro", "Cidade"};
 		dados = listaParaMatriz();
-		tabelaCategoria = new JTable(dados, atributos);
-		scrollTabela = new JScrollPane(tabelaCategoria);
+		tabelaCliente = new JTable(dados, atributos);
+		scrollTabela = new JScrollPane(tabelaCliente);
 		this.add(scrollTabela);
 		
 	}
@@ -43,8 +42,7 @@ public class ConsultarCliente extends JFrame {
 		Object[][] matriz = new Object[lista.size()][8];
 		for (int i = 0; i < lista.size(); i++) {
 			matriz[i][0] = lista.get(i).getNomeCliente();
-			matriz[i][1] = lista.get(i).getDatanasc().DATE + "/" + lista.get(i).getDatanasc().MONTH + "/" + lista.get(i).getDatanasc().YEAR;
-			System.out.println(lista.get(i).getDatanasc().DATE + "/" + lista.get(i).getDatanasc().MONTH + "/" + lista.get(i).getDatanasc().YEAR);
+			matriz[i][1] = lista.get(i).getDatanasc().getTime().getDate() + "/" + (lista.get(i).getDatanasc().getTime().getMonth() + 1) + "/" + (lista.get(i).getDatanasc().getTime().getYear() + 1900);
 			matriz[i][2] = lista.get(i).getCpfCliente();
 			matriz[i][3] = lista.get(i).getSexoCliente();
 			matriz[i][4] = lista.get(i).getLogradouroCliente();

@@ -25,7 +25,6 @@ public class ConsultarCategoria extends JFrame {
 
 		setTitle("Consultar Categoria");
 		setSize(900, 600);
-	    this.setResizable(false);
 		setLocationRelativeTo(null);
 
 		atributos = new String[] {"Nome"};

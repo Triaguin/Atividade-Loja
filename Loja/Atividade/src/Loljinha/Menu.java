@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import DAOLojinha.CategoriaDAO;
+import ModelLojinha.ModelarCategoria;
+
 public class Menu extends JFrame {
 
 	public Menu() { // Criando o menu
@@ -149,13 +152,13 @@ public class Menu extends JFrame {
 			JMenuItem consultarProduto = new JMenuItem("Produto");
 			consultarProduto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-//					CadastrarProduto consultarProduto;
-//					try {
-//						consultarProduto = new CadastrarProduto();
-//					} catch (SQLException e) {
-//						throw new RuntimeException();
-//					}
-//					consultarProduto.setVisible(true);
+					ConsultarProduto consultarProduto;
+					try {
+						consultarProduto = new ConsultarProduto();
+					} catch (SQLException e) {
+						throw new RuntimeException();
+					}
+					consultarProduto.setVisible(true);
 				}
 			});
 			consultar.add(consultarProduto);
@@ -193,6 +196,7 @@ public class Menu extends JFrame {
 			JMenuItem alterarCategoria = new JMenuItem("Categoria");
 			alterarCategoria.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
+					
 					AlterarCategoria alterarCategoria = new AlterarCategoria();
 					alterarCategoria.setVisible(true);
 				}

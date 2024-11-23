@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import ModelLojinha.ModelarProduto;
@@ -41,6 +43,46 @@ private Connection connection;
 		finally {
 			connection.close();
 		}
+	}
+	
+	public List<ModelarProduto> getLista() throws SQLException { // Select basicamente
+
+		try {
+
+			List<ModelarProduto> produtos = new ArrayList<ModelarProduto>(); // cria a lista de produtos
+
+			String sql = "SELECT * FROM tbProduto";
+
+			PreparedStatement stmt = connection.prepareStatement(sql); // preparando parar executar o codigo
+
+			ResultSet rs = stmt.executeQuery(); // Guarda os produtos do select
+
+			while (rs.next()) { // Coloca cada uma dos produtos num objeto modelarproduto
+
+				ModelarProduto produto = new ModelarProduto(); // Cria um novo modelarproduto
+
+				// Adiciona as informacoes da produtos
+				produto.setIdProduto(rs.getInt(1));
+				produto.setNomeProduto(rs.getString(2));
+				produto.setValorProduto(rs.getDouble(3));
+				produto.setQuantidadeProduto(rs.getInt(4));
+				produto.setIdCategoria(rs.getInt(5));
+
+				produtos.add(produto); // adiciona o produto na lista
+			}
+
+			rs.close();
+			stmt.close();
+
+			return produtos; // retorna os produtos
+		} catch (SQLException e) {
+
+			System.out.println("Erro: " + e); // Caso algum erro ocorra no codigo, ele ira informar
+		} finally {
+
+			connection.close();
+		}
+		return null;
 	}
 }
 

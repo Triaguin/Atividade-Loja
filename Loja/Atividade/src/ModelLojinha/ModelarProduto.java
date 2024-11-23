@@ -6,6 +6,8 @@ public class ModelarProduto {
 	private String nomeProduto;
 	private double valorProduto;
 	private int quantidadeProduto;
+	private int idCategoria;
+	
 	public int getIdProduto() {
 		return idProduto;
 	}
@@ -29,6 +31,12 @@ public class ModelarProduto {
 	}
 	public void setQuantidadeProduto(int quantidadeProduto) {
 		this.quantidadeProduto = quantidadeProduto;
+	}
+	public int getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 	
 

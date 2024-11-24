@@ -131,8 +131,14 @@ public class Menu extends JFrame {
 			JMenuItem telefone = new JMenuItem("Telefone");
 			telefone.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-					CadastrarTelefone novoTelefone = new CadastrarTelefone();
-					novoTelefone.setVisible(true);
+					CadastrarTelefone novoTelefone;
+					try {
+						novoTelefone = new CadastrarTelefone();
+						novoTelefone.setVisible(true);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				});
 			

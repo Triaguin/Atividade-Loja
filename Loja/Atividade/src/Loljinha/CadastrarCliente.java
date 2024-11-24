@@ -11,6 +11,7 @@ import java.util.Calendar;
 
 import DAOLojinha.CategoriaDAO;
 import DAOLojinha.ClienteDAO;
+import DAOLojinha.ListaTelefoneDAO;
 import DAOLojinha.TelefoneDAO;
 import ModelLojinha.ModelarCliente;
 import ModelLojinha.ModelarTelefone;
@@ -44,11 +45,11 @@ public class CadastrarCliente extends JFrame {
 	private JLabel lbCidadeCliente;
 	private JTextField txCidadeCliente;
 
-	private JButton btTelefoneCliente;
 	private JButton btCadastrarCliente;
 
 	ModelarCliente cliente = new ModelarCliente();
 	ModelarTelefone telefone = new ModelarTelefone();
+	ListaTelefoneDAO salvarTelefone = new ListaTelefoneDAO();
 	
 	public CadastrarCliente() {
 
@@ -164,18 +165,8 @@ public class CadastrarCliente extends JFrame {
 		txCidadeCliente.setBounds(300, 585, 300, 35);
 		add(txCidadeCliente);
 		
-		//Botao AdcionarTelefone
-		btTelefoneCliente = new JButton();
-		btTelefoneCliente.setText("Adicionar um Telefone");
-		btTelefoneCliente.setBounds(350, 635, 200 , 35);
-		add(btTelefoneCliente);
 		
-	btTelefoneCliente.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent evento) {
-			CadastrarTelefone novoTelefone = new CadastrarTelefone();
-			novoTelefone.setVisible(true);
-		}
-		});
+
 		
 		// Botao Cadastrar
 		btCadastrarCliente = new JButton();
@@ -290,7 +281,7 @@ public class CadastrarCliente extends JFrame {
 					}
 					
 					new ClienteDAO().adicionarCategoria(cliente);
-					
+					new ListaTelefoneDAO().adicionarListaTelefone(cliente, telefone);
 					
 					JOptionPane.showMessageDialog(null,
 							cadastrarCliente(nome, diaNasc, mesNasc, anoNasc, cpf, sexo, logradouro, numLogr, bairro,

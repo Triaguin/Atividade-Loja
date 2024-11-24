@@ -127,6 +127,16 @@ public class Menu extends JFrame {
 			});
 
 			cadastrar.add(pedido);
+			
+			JMenuItem telefone = new JMenuItem("Telefone");
+			telefone.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evento) {
+					CadastrarTelefone novoTelefone = new CadastrarTelefone();
+					novoTelefone.setVisible(true);
+				}
+				});
+			
+			cadastrar.add(telefone);
 
 			// Cria o menu Consultar
 			JMenu consultar = new JMenu("Consultar");

@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import ModelLojinha.ModelarCliente;
 import DAOLojinha.ClienteDAO;
+import DAOLojinha.ListaTelefoneDAO;
 
 public class ConsultarCliente extends JFrame {
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ModelLojinha.ModelarTelefone;
+import ModelLojinha.ModelarCategoria;
 import ModelLojinha.ModelarCliente;
 
 public class TelefoneDAO {
@@ -44,6 +45,8 @@ private Connection connection;
 		finally {
 			connection.close();
 		}
+		
+		
 		
 	}
 	

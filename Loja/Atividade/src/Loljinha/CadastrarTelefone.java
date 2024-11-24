@@ -2,13 +2,15 @@ package Loljinha;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.*;
 
 import DAOLojinha.TelefoneDAO;
+import ModelLojinha.ModelarTelefone;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import ModelLojinha.ModelarTelefone;
 
 public class CadastrarTelefone extends JFrame  {
 
@@ -16,8 +18,8 @@ public class CadastrarTelefone extends JFrame  {
 	private JTextField txTelefone;
 	private JButton btCadastrarTelefone;
 	
-	ModelarTelefone Telefone = new ModelarTelefone();
 	
+	ModelarTelefone Telefone = new ModelarTelefone();
 	
 	public CadastrarTelefone() {
 		setTitle("Cadastrar Telefone");
@@ -50,6 +52,13 @@ public class CadastrarTelefone extends JFrame  {
 					} else {
 						Telefone.setTelefone(tl);
 						JOptionPane.showMessageDialog(null, Telefone.getTelefone() + " Adicionado");
+						try {
+							new TelefoneDAO().adicionarTelefone(Telefone);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 					}
 					
 				

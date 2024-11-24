@@ -18,16 +18,15 @@ private Connection connection;
 		this.connection = new ConnectionFactory().getConnection(); // Cada vez que criar uma instancia, ira conectar com o banco de dados
 	}
 	
-	public void adicionarTelefone(ModelarTelefone Telefone , ModelarCliente Cliente) throws SQLException {
+	public void adicionarTelefone(ModelarTelefone Telefone) throws SQLException {
 		
 		try {
 			
-			String tbTelefone = "insert into tbTelefone (numTelefone , idCliente) values(?,?)";
+			String tbTelefone = "insert into tbTelefone (numTelefone) values(?)";
 			
 			PreparedStatement stmt = connection.prepareStatement (tbTelefone);
 			
 			stmt.setString(1, Telefone.getTelefone());
-			stmt.setInt(2, Cliente.getIdCliente());
 			
 			stmt.execute();
 			stmt.close();

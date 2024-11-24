@@ -28,7 +28,7 @@ CREATE TABLE tbListaTelefone (
     idListaTelefone INT PRIMARY KEY AUTO_INCREMENT
     , idTelefone INT , FOREIGN KEY (idTelefone) REFERENCES tbTelefone(idTelefone)
     , idCliente INT , FOREIGN KEY (idCliente) REFERENCES tbCliente(idCliente)
-)
+);
 
 
 CREATE TABLE tbProduto (

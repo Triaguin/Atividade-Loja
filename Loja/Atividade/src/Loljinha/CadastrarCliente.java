@@ -290,7 +290,7 @@ public class CadastrarCliente extends JFrame {
 					}
 					
 					new ClienteDAO().adicionarCategoria(cliente);
-					new TelefoneDAO().adicionarTelefone(telefone, cliente);
+					
 					
 					JOptionPane.showMessageDialog(null,
 							cadastrarCliente(nome, diaNasc, mesNasc, anoNasc, cpf, sexo, logradouro, numLogr, bairro,

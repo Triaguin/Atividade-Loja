@@ -2,6 +2,7 @@ package ModelLojinha;
 
 public class ModelarTelefone {
 	
+	private int idTelefone;
 	private String Telefone;
 
 	public String getTelefone() {

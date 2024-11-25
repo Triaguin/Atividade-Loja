@@ -17,10 +17,12 @@ public class AlterarProduto extends JFrame {
 	private JLabel lbnomeProduto;
 	private JLabel lbprecoProduto;
 	private JLabel lbqtProduto;
+	private JLabel lbidCategoria;
 	private JTextField txidProduto;
 	private JTextField txnomeProduto;
 	private JTextField txprecoProduto;
 	private JTextField txqtProduto;
+	private JTextField txidCategoria;
 	private JButton btalterarProduto;
 	
 	public AlterarProduto() {
@@ -58,28 +60,40 @@ public class AlterarProduto extends JFrame {
 		add(txprecoProduto);
 		
 		lbqtProduto = new JLabel();
+		lbqtProduto.setText("idProduto: ");
 		lbqtProduto.setBounds(420, 255, 200, 30);
 		add(lbqtProduto);;
 		
+		txqtProduto = new JTextField();
+		txqtProduto.setBounds(420, 200, 200, 30);
+		add(txqtProduto);
+		
+		lbidCategoria = new JLabel();
+		lbidCategoria.setText("idProduto: ");
+		lbidCategoria.setBounds(420, 305, 200, 30);
+		add(lbidCategoria);
+		
+		txidCategoria = new JTextField();
+		txidCategoria.setBounds(420, 300, 200, 30);
+		add(txidCategoria);
+		
 		btalterarProduto = new JButton();
 		btalterarProduto.setText("Alterar");
-		btalterarProduto.setBounds(420, 300, 100, 35);
+		btalterarProduto.setBounds(420, 350, 100, 35);
 		
-//		btalterarProduto.addActionListener(new ActionListener() {
-//
-//			public void actionPerformed(ActionEvent e) {
-//				
-//				try {
-//					ModelarProduto Produto = new ModelarProduto();
-//					Produto.setIdCategoria(Integer.parseInt(txidProduto.getText()));
-//					Produto.setNomeProduto(txnomeProduto.getText());
-//				} catch (SQLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				
-//			}
-//		});
+		btalterarProduto.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				ModelarProduto Produto = new ModelarProduto();
+				Produto.setIdProduto(Integer.parseInt(txidProduto.getText()));
+				Produto.setNomeProduto(txnomeProduto.getText());
+				Produto.setValorProduto(Double.parseDouble(txprecoProduto.getText()));
+				Produto.setQuantidadeProduto(Integer.parseInt(txqtProduto.getText()));
+				Produto.setIdCategoria(Integer.parseInt(txidCategoria.getText()));
+				
+			}
+		});
 		add(btalterarProduto);
 	}
 	

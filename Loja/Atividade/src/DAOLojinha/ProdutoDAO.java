@@ -84,5 +84,32 @@ private Connection connection;
 		}
 		return null;
 	}
-}
+	
+	public void alterarProduto(ModelarProduto produto) throws SQLException { 
 
+
+			String sql = "UPDATE tbProduto SET nomeProduto = ? SET valorProduto = ? SET qtProduto = ? SET idCategoria ?  WHERE idProduto = ?";
+			
+			try {
+			
+			PreparedStatement stmt = connection.prepareStatement(sql); 
+			
+			stmt.setString(1, produto.getNomeProduto());
+			stmt.setDouble(2, produto.getValorProduto());
+			stmt.setInt(3, produto.getQuantidadeProduto());
+			stmt.setInt(4, produto.getIdCategoria());
+			stmt.setInt(5, produto.getIdProduto());
+			
+			
+			stmt.execute();
+			stmt.close();
+			
+			} catch (SQLException e) {
+			
+			System.out.println("Erro: " + e); // Caso algum erro ocorra no codigo, ele ira informar
+			} finally {
+			
+			connection.close();
+			}
+			}
+}

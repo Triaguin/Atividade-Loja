@@ -137,4 +137,23 @@ public class CategoriaDAO {
 		}
 		return null;
 	}
+	
+	public void excluirCategoria(ModelarCategoria categoria) throws SQLException {
+		
+		String sql = "DELETE*FROM tbCategoria WHERE idCategoria = ?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setInt(1, categoria.getIdCategoria());
+			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+
+			System.out.println("Erro: " + e); // Caso algum erro ocorra no codigo, ele ira informar
+		} finally {
+
+			connection.close();
+		}
+	}
 }

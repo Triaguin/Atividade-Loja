@@ -100,4 +100,55 @@ public class ClienteDAO {
 		}
 		return null;
 	}
+	
+	public void alterarCliente (ModelarCliente cliente) throws SQLException {
+		String sql = "UPDATE tbCliente SET nomeCliente = ? SET datanascCliente = ? SET cpfCliente = ? SET sexoCliente = ? SET logradouroCliente = ? SET numLogradouroCliente = ? SET bairroCliente = ? SET cidadeCliente = ? WHERE idCliente = ?";
+		
+		try {
+			java.sql.Date datasql = new java.sql.Date(cliente.getDatanasc().getTime().getTime());
+			datasql.setMonth((datasql.getMonth() - 1) % 12);
+			
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, cliente.getNomeCliente());
+			stmt.setDate(2, datasql);
+			stmt.setString(3, cliente.getCpfCliente());
+			stmt.setInt(4, cliente.getSexoCliente());
+			stmt.setString(5, cliente.getLogradouroCliente());
+			stmt.setInt(6, cliente.getNumLogradouroCliente());
+			stmt.setString(7, cliente.getBairroCliente());
+			stmt.setString(8, cliente.getCidadeCliente());
+			stmt.setInt(9, cliente.getIdCliente());
+			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+
+			System.out.println("Erro: " + e); // Caso algum erro ocorra no codigo, ele ira informar
+		} finally {
+
+			connection.close();
+		}
+	
+		
+	}
+	
+	public void excluirCliente(ModelarCliente cliente) throws SQLException {
+		try {
+			String sql = "DELETE * FROM tbCliente WHERE idCliente = ?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setInt(1, cliente.getIdCliente());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+
+			System.out.println("Erro: " + e); // Caso algum erro ocorra no codigo, ele ira informar
+		} finally {
+
+			connection.close();
+		}
+	}
+	
+	
 }

@@ -112,4 +112,21 @@ private Connection connection;
 			connection.close();
 			}
 			}
+	
+	public void excluirProduto(ModelarProduto produto)throws SQLException {
+		try {
+			String sql = "DELETE * FROM tbProduto WHERE idProduto = ?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setInt(1, produto.getIdProduto());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+
+			System.out.println("Erro: " + e); 
+		} finally {
+
+			connection.close();
+		}
+	}
 }

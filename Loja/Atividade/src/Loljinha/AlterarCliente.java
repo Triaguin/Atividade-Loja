@@ -2,22 +2,21 @@ package Loljinha;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
+import java.beans.PropertyChangeListener;
+import java.sql.SQLException;
+import java.util.Calendar;
 
 import javax.swing.*;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 import DAOLojinha.CategoriaDAO;
 import DAOLojinha.ClienteDAO;
 import DAOLojinha.ListaTelefoneDAO;
-import DAOLojinha.TelefoneDAO;
 import ModelLojinha.ModelarCliente;
-import ModelLojinha.ModelarTelefone;
-
-public class CadastrarCliente extends JFrame {
-
+public class AlterarCliente extends JFrame {
+	
+	private JLabel lbidCliente;
+	private JTextField txidCliente;
+	
 	private JLabel lbNomeCliente;
 	private JTextField txNomeCliente;
 
@@ -45,28 +44,35 @@ public class CadastrarCliente extends JFrame {
 	private JLabel lbCidadeCliente;
 	private JTextField txCidadeCliente;
 
-	private JButton btCadastrarCliente;
-
+	private JButton btalterarCliente;
+	
 	ModelarCliente cliente = new ModelarCliente();
-	public CadastrarCliente() {
+	public void alterarCliente() {
 
 		setTitle("Cadastrar Cliente");
 		setSize(900, 800);
 		this.setResizable(false);
 		setLayout(null);
 		setLocationRelativeTo(null);
-
-		// Nome
+		
+		lbidCliente = new JLabel();
+		lbidCliente.setText("Id Cliente: ");
+		lbidCliente.setBounds(300, 105, 300, 15);
+		add(lbidCliente);
+		
+		txidCliente = new JTextField();
+		txidCliente.setBounds(300, 100, 300, 35);
+		add(txidCliente);
+		
 		lbNomeCliente = new JLabel();
-		lbNomeCliente.setText("Nome: ");
-		lbNomeCliente.setBounds(300, 100, 300, 15);
-		add(lbNomeCliente);
-
+		lbNomeCliente.setText("Id Cliente: ");
+		lbNomeCliente.setBounds(300, 155, 300, 15);
+		add(lbidCliente);
+		
 		txNomeCliente = new JTextField();
-		txNomeCliente.setBounds(300, 115, 300, 35);
+		txNomeCliente.setBounds(300, 150, 300, 35);
 		add(txNomeCliente);
-
-		// Data Nascimento
+		
 		lbDataNascCliente = new JLabel();
 		lbDataNascCliente.setText("Data de Nascimento: (DD MM AAAA)");
 		lbDataNascCliente.setBounds(300, 165, 300, 15);
@@ -166,13 +172,11 @@ public class CadastrarCliente extends JFrame {
 
 		
 		// Botao Cadastrar
-		btCadastrarCliente = new JButton();
-		btCadastrarCliente.setText("Cadastrar");
-		btCadastrarCliente.setBounds(400, 690, 100, 35);
+		btalterarCliente = new JButton();
+		btalterarCliente.setText("Cadastrar");
+		btalterarCliente.setBounds(400, 690, 100, 35);
 
-		btCadastrarCliente.addActionListener(new ActionListener() {
-			
-			//Atribuindo os valores
+		btalterarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				try { // Tenta fazer o codigo (se der erro ele manda pro catch)
@@ -277,15 +281,13 @@ public class CadastrarCliente extends JFrame {
 						System.out.println(cliente.getCidadeCliente());
 					}
 					
-					new ClienteDAO().adicionarCategoria(cliente);
-					new ListaTelefoneDAO().adicionarListaTelefone(cliente, telefone);
+					new ClienteDAO().alterarCliente(cliente);
 					
 					JOptionPane.showMessageDialog(null,
 							cadastrarCliente(nome, diaNasc, mesNasc, anoNasc, cpf, sexo, logradouro, numLogr, bairro,
 									cidade) ? "Cliente " + nome + " Cadastrada Com Sucesso"
 											: "Cliente " + nome + " Nao Cadastrada Com Sucesso"); // cadastra o cliente e mostra o resultado
-					
-					System.out.println(telefone.getTelefone());
+				
 
 				} catch (Exception execao) { // Se deu erro fala que deu erro (sem estoura o programa)
 					JOptionPane.showMessageDialog(null, "Erro no Cadastro do Cliente");
@@ -293,7 +295,7 @@ public class CadastrarCliente extends JFrame {
 			}
 		});
 
-		add(btCadastrarCliente);
+		add(btalterarCliente);
 	}
 
 	public boolean cadastrarCliente(String nome, int diaNasc, int mesNasc, int AnoNasc, String cpf, int sexo,
@@ -301,4 +303,8 @@ public class CadastrarCliente extends JFrame {
 		return true;
 	}
 
-}
+		
+		
+	
+	}
+

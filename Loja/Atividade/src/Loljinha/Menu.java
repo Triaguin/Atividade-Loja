@@ -224,13 +224,9 @@ public class Menu extends JFrame {
 			JMenuItem alterarProduto = new JMenuItem("Produto");
 			alterarProduto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evento) {
-//					AlterarProduto alterarProduto;
-//					try {
-//						 alterarProduto = new AlterarProduto();
-//					} catch (SQLException e) {
-//						throw new RuntimeException();
-//					}
-//					alterarProduto.setVisible(true);
+					AlterarProduto alterarProduto;
+					alterarProduto = new AlterarProduto();
+					alterarProduto.setVisible(true);
 				}
 			});
 			alterar.add(alterarProduto);

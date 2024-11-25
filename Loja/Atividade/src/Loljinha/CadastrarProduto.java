@@ -25,7 +25,6 @@ public class CadastrarProduto extends JFrame {
 	private JComboBox cbCategoriaProduto;
 	private JButton btCadastrarProduto;
 	
-//	ModelarEstoque Estoque = new ModelarEstoque();
 	ModelarProduto Produto = new ModelarProduto();
 	ModelarCategoria categoria = new ModelarCategoria();
 	ProdutoDAO salvarProduto = new ProdutoDAO();

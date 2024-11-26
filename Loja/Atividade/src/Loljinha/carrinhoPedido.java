@@ -19,6 +19,7 @@ public class carrinhoPedido extends JFrame {
 	private JTextField txqtProdutos;
 	private JButton btAdicionarProduto;
 	private JButton btfinalizarPedido;
+	private Double valorTotalVenda;
 	
 	ModelarPedido pedido = new ModelarPedido();
 	ModelarProduto produto = new ModelarProduto();
@@ -72,6 +73,7 @@ public class carrinhoPedido extends JFrame {
 				produto.setIdProduto(idProduto);
 				try {
 					salvarCarrinho.adicionarCarrinho(produto, pedido);
+					valorTotalVenda = valorTotalVenda + produtos.get(cbProduto.getSelectedIndex()).getValorProduto(); //Ele vai salvar o valor do produto na variavel
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -86,6 +88,8 @@ public class carrinhoPedido extends JFrame {
 				
 				int qtProduto = Integer.parseInt(txqtProdutos.getText());
 				pedido.setStatusPedido("Finalizado"); // Ele ira finalizar pedido
+				pedido.setValorPedido(valorTotalVenda);
+				
 				try { // Ele atualiza o estoque do produto quando a compra for finalizada
 					produtoDAO.qtProduto(produto, qtProduto);
 				} catch (SQLException e1) {

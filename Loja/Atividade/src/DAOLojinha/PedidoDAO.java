@@ -48,7 +48,7 @@ private Connection connection;
 	
 	public void statusPedido (ModelarPedido pedido) throws SQLException {
 		try {
-			String tbCarrinho = "UPDATE tbPedido SET statusPedido = ? WHERE idPedido = ?";
+			String tbCarrinho = "UPDATE tbPedido SET statusPedido = ? SET valorPedido = ? WHERE idPedido = ?";
 			
 			PreparedStatement stmt = connection.prepareStatement(tbCarrinho);
 			

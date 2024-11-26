@@ -112,6 +112,33 @@ private Connection connection;
 			connection.close();
 			}
 			}
+		
+	public void qtProduto(ModelarProduto produto, int qtProduto) throws SQLException { //Essa funcao serve para atualizar o estoque quando um pedido e feito
+
+
+		String sql = "UPDATE SET qtProduto = ?  WHERE idProduto = ?";
+		
+		try {
+		
+		PreparedStatement stmt = connection.prepareStatement(sql); 
+		
+		stmt.setInt(1, produto.getQuantidadeProduto());
+		stmt.setInt(2, produto.getIdProduto());
+		
+		
+		
+		stmt.execute();
+		stmt.close();
+		
+		} catch (SQLException e) {
+		
+		System.out.println("Erro: " + e); 
+		} finally {
+		
+		connection.close();
+		}
+		}
+	
 	
 	public void excluirProduto(ModelarProduto produto)throws SQLException {
 		try {

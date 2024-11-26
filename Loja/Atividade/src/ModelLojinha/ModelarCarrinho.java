@@ -11,4 +11,5 @@ public class ModelarCarrinho {
 	public void setIdCarrinho(int idCarrinho) {
 		this.idCarrinho = idCarrinho;
 	}
+	
 }

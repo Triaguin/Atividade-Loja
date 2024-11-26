@@ -3,60 +3,72 @@ package Loljinha;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
 import DAOLojinha.PedidoDAO;
+import DAOLojinha.ProdutoDAO;
 import ModelLojinha.ModelarPedido;
+import ModelLojinha.ModelarProduto;
 public class carrinhoPedido extends JFrame {
-	private JComboBox cbcarrinho;
-	private JLabel lbvalorPedido;
-	private JTextField txvalorPedido;
+	private JComboBox cbProduto;
+	private int qtProdutos = 0;
+	private JLabel lbqtProdutos;
+	private JTextField txqtProdutos;
+	private JButton btAdicionarProduto;
 	private JButton btfinalizarPedido;
 	
 	ModelarPedido pedido = new ModelarPedido();
 	PedidoDAO salvarPedido = new PedidoDAO();
 	
-	public carrinhoPedido() {
+	public carrinhoPedido() throws SQLException {
 		this.setTitle("Carrinho");
 	    this.setSize(900,600);  
 	    this.setResizable(false);
 	    this.setLocationRelativeTo(null);
 	    setLayout(null); // Importante
 	    
+	    List<ModelarProduto> produtos = new ProdutoDAO().getLista();
+			String[] ListaProdutos = new String[produtos.size()]; 
+			
+			for (int i = 0; i < produtos.size(); i++) { 
+				ListaProdutos[i] = produtos.get(i).getNomeProduto();
+			}
 	    
-//	    cbcarrinho = new JComboBox();
-//	    cbcarrinho.setBounds(300, 100, 300, 35);
-//	    add(cbcarrinho); //Aqui aonde vai ficar o carrinho
+	    cbProduto = new JComboBox(ListaProdutos);
+	    cbProduto.setBounds(300, 50, 300, 30);
+	    add(cbProduto); //Aqui aonde vai ficar o carrinho
 	    
-	    lbvalorPedido = new JLabel();
-		lbvalorPedido.setText("Valor Pedido");
-		lbvalorPedido.setBounds(300, 100, 300, 15);
-		add(lbvalorPedido);
-
-		txvalorPedido = new JTextField();
-		txvalorPedido.setBounds(300, 115, 300, 35);
-		add(txvalorPedido);
-
+	    txqtProdutos = new JTextField();
+	    txqtProdutos.setBounds(500, 15, 100, 30);
+	    add(txqtProdutos);
+	    
+	    lbqtProdutos = new JLabel();
+	    lbqtProdutos.setText("Quantidade de produtos");
+	    lbqtProdutos.setBounds(300, 160, 300, 30);
+	    add(lbqtProdutos);
+	    
+	    
+	    btAdicionarProduto = new JButton();
+	    btAdicionarProduto.setText("Adicionar pedido");
+	    btAdicionarProduto.setBounds(350, 450, 150, 30);
+	    add(btAdicionarProduto);
 	    
 	    btfinalizarPedido = new JButton();
-	    btfinalizarPedido.setBounds(350, 500, 200, 35);
-	    btfinalizarPedido.setText("Finzalizar pedido");
+	    btfinalizarPedido.setText("FInalizar Pedido");
+	    btfinalizarPedido.setBounds(350, 500, 150, 30);
 	    add(btfinalizarPedido);
 	    
-	    btfinalizarPedido.addActionListener((ActionListener) new ActionListener() {
-    	public void actionPerformed(ActionEvent e) {
-  			Double valorPedido = Double.parseDouble(txvalorPedido.getText());
-  			pedido.setStatusPedido("Em andamento"); 		
-  			try {
-				salvarPedido.adcionarPedido(pedido);
-				JOptionPane.showMessageDialog(null, "Pedido finalizado");
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+	    btAdicionarProduto.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 			}
-		}
-    });
+		});
 	}
 
 }

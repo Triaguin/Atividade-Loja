@@ -43,14 +43,13 @@ CREATE TABLE tbPedido (
     idPedido INT PRIMARY KEY AUTO_INCREMENT
     , valorPedido FLOAT
     , dataPedido DATETIME
-    , idCliente INT , FOREIGN KEY (idCliente) REFERENCES tbCliente(idCliente)
     , statusPedido VARCHAR (40)
 );
 
 CREATE TABLE tbCarrinho (
     idCarrinho INT PRIMARY KEY AUTO_INCREMENT
     , idProduto INT , FOREIGN KEY (idProduto) REFERENCES tbProduto(idProduto)
-    , idPedido INT , FOREIGN KEY (idProduto) REFERENCES tbPedido(idPedido)
+    , idPedido INT , FOREIGN KEY (idPedido) REFERENCES tbPedido(idPedido)
 );
 
 

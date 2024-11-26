@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.time.LocalDate;
 
 import javax.swing.*;
 import ModelLojinha.ModelarPedido;
@@ -20,11 +23,18 @@ private Connection connection;
 	
 	public void adcionarPedido (ModelarPedido pedido) throws SQLException {
 		try {
-			String tbPedido = "insert into tbPedido (valorPedido,statusPedido) values (?,?)";
+			String tbPedido = "insert into tbPedido (dataPedido,statusPedido) values (?,?)";
 			PreparedStatement stmt = connection.prepareStatement (tbPedido);
 			
-			stmt.setDouble(1, pedido.getValorPedido());
+			Date data = new Date();
+			java.sql.Date datasql = new java.sql.Date(data.getDate());
+			
+			stmt.setDate(1,datasql);
 			stmt.setString(2, pedido.getStatusPedido());
+			
+			stmt.execute();
+			stmt.close();
+
 		}
 		
 		catch(SQLException e) {

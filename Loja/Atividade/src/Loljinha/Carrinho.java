@@ -5,5 +5,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Carrinho extends JFrame{
-	
+	private JComboBox cbListaProdutos;
+	private JButton
 }

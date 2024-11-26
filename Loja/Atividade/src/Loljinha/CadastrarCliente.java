@@ -278,14 +278,11 @@ public class CadastrarCliente extends JFrame {
 					}
 					
 					new ClienteDAO().adicionarCategoria(cliente);
-					new ListaTelefoneDAO().adicionarListaTelefone(cliente, telefone);
 					
 					JOptionPane.showMessageDialog(null,
 							cadastrarCliente(nome, diaNasc, mesNasc, anoNasc, cpf, sexo, logradouro, numLogr, bairro,
 									cidade) ? "Cliente " + nome + " Cadastrada Com Sucesso"
 											: "Cliente " + nome + " Nao Cadastrada Com Sucesso"); // cadastra o cliente e mostra o resultado
-					
-					System.out.println(telefone.getTelefone());
 
 				} catch (Exception execao) { // Se deu erro fala que deu erro (sem estoura o programa)
 					JOptionPane.showMessageDialog(null, "Erro no Cadastro do Cliente");

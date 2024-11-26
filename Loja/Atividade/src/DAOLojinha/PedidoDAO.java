@@ -27,7 +27,7 @@ private Connection connection;
 			PreparedStatement stmt = connection.prepareStatement (tbPedido);
 			
 			Date data = new Date();
-			java.sql.Date datasql = new java.sql.Date(data.getDate());
+			java.sql.Date datasql = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 			
 			stmt.setDate(1,datasql);
 			stmt.setString(2, pedido.getStatusPedido());

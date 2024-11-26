@@ -2,6 +2,7 @@ package Loljinha;
 
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -14,7 +15,6 @@ public class Menu extends JFrame {
 	public Menu() { // Criando o menu
 
 		try {
-
 			// Cria as coisas basicas da Aplicacao
 			this.setTitle("Aplicacao");
 			this.setSize(960, 540);

@@ -3,6 +3,7 @@ package ModelLojinha;
 public class ModelarPedido {
 	
 	private int idPedido;
+	private int contador ;
 	private String dataPedido;
 	private String statusPedido;
 	private Double valorPedido;
@@ -31,4 +32,13 @@ public class ModelarPedido {
 	public void setStatusPedido(String statusPedido) {
 		this.statusPedido = statusPedido;
 	}
+	public int getContador() {
+		return contador;
+	}
+	public void setContador(int contador) {
+		contador = 1;
+		this.contador = contador;
+	}
+	
+	
 }

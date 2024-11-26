@@ -46,4 +46,26 @@ private Connection connection;
 		}
 			}
 	
+	public void statusPedido (ModelarPedido pedido) throws SQLException {
+		try {
+			String tbCarrinho = "UPDATE tbPedido SET statusPedido = ? WHERE idPedido = ?";
+			
+			PreparedStatement stmt = connection.prepareStatement(tbCarrinho);
+			
+			stmt.setString(1, pedido.getStatusPedido());
+			stmt.setInt(2, pedido.getIdPedido());
+			
+			stmt.execute();
+			stmt.close();
+		}
+		
+		catch(SQLException e) {
+			System.out.println("Erro: " + e); 
+			
+		}
+		finally {
+			connection.close();
+		}
+	}
+	
 }

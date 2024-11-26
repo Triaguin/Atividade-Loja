@@ -8,20 +8,23 @@ import java.util.List;
 
 import javax.swing.*;
 
+import DAOLojinha.CarrinhhoDAO;
 import DAOLojinha.PedidoDAO;
 import DAOLojinha.ProdutoDAO;
 import ModelLojinha.ModelarPedido;
 import ModelLojinha.ModelarProduto;
 public class carrinhoPedido extends JFrame {
 	private JComboBox cbProduto;
-	private int qtProdutos = 0;
 	private JLabel lbqtProdutos;
 	private JTextField txqtProdutos;
 	private JButton btAdicionarProduto;
 	private JButton btfinalizarPedido;
 	
 	ModelarPedido pedido = new ModelarPedido();
+	ModelarProduto produto = new ModelarProduto();
+	CarrinhhoDAO salvarCarrinho = new CarrinhhoDAO();
 	PedidoDAO salvarPedido = new PedidoDAO();
+	ProdutoDAO produtoDAO = new ProdutoDAO();
 	
 	public carrinhoPedido() throws SQLException {
 		this.setTitle("Carrinho");
@@ -42,7 +45,7 @@ public class carrinhoPedido extends JFrame {
 	    add(cbProduto); //Aqui aonde vai ficar o carrinho
 	    
 	    txqtProdutos = new JTextField();
-	    txqtProdutos.setBounds(500, 15, 100, 30);
+	    txqtProdutos.setBounds(500, 150, 100, 30);
 	    add(txqtProdutos);
 	    
 	    lbqtProdutos = new JLabel();
@@ -61,11 +64,34 @@ public class carrinhoPedido extends JFrame {
 	    btfinalizarPedido.setBounds(350, 500, 150, 30);
 	    add(btfinalizarPedido);
 	    
-	    btAdicionarProduto.addActionListener(new ActionListener() {
+	    btAdicionarProduto.addActionListener(new ActionListener() { // Esse serve para atribuir um produto a um carrinho, nao esta funcionando ainda
 
 			public void actionPerformed(ActionEvent e) {
 				
+				int idProduto = (int) produtos.get(cbProduto.getSelectedIndex()).getIdProduto();
+				produto.setIdProduto(idProduto);
+				try {
+					salvarCarrinho.adicionarCarrinho(produto, pedido);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
+			}
+		});
+	    
+	    btfinalizarPedido.addActionListener(new ActionListener() { // Esse serve para atribuir um produto a um carrinho, nao esta funcionando ainda
+
+			public void actionPerformed(ActionEvent e) {
+				
+				int qtProduto = Integer.parseInt(txqtProdutos.getText());
+				pedido.setStatusPedido("Finalizado"); // Ele ira finalizar pedido
+				try { // Ele atualiza o estoque do produto quando a compra for finalizada
+					produtoDAO.qtProduto(produto, qtProduto);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});

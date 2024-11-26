@@ -116,7 +116,7 @@ private Connection connection;
 	public void qtProduto(ModelarProduto produto, int qtProduto) throws SQLException { //Essa funcao serve para atualizar o estoque quando um pedido e feito
 
 
-		String sql = "UPDATE SET qtProduto = ?  WHERE idProduto = ?";
+		String sql = "UPDATE tbProduto SET qtProduto = ?  WHERE idProduto = ?";
 		
 		try {
 		

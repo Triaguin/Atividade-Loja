@@ -11,7 +11,6 @@ import DAOLojinha.PedidoDAO;
 public class CadastrarPedido extends JFrame {
 	private JButton btnovoPedido;
 	private JButton btverPedido;
-	public int contador = 0;
 	
 	ModelarPedido pedido = new ModelarPedido();
 	public CadastrarPedido() {		
@@ -38,16 +37,16 @@ public class CadastrarPedido extends JFrame {
 				}
     			
     			
-//    			pedido.setStatusPedido(null);
-//    			pedido.setStatusPedido("Em andamento");
-//    			
-//    			try {
-//					new PedidoDAO().adcionarPedido(pedido);
-//					contador++;
-//				} catch (SQLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
+    			pedido.setStatusPedido(null);
+    			pedido.setStatusPedido("Em andamento");
+    			
+    			try {
+					new PedidoDAO().adcionarPedido(pedido);
+					pedido.setContador(pedido.getContador() + 1);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
     			
     		}
 	    });

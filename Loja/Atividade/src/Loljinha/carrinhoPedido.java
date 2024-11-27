@@ -72,7 +72,7 @@ public class carrinhoPedido extends JFrame {
 				int idProduto = (int) produtos.get(cbProduto.getSelectedIndex()).getIdProduto();
 				produto.setIdProduto(idProduto);
 				try {
-					salvarCarrinho.adicionarCarrinho(produto, pedido);
+					salvarCarrinho.adicionarCarrinho(produto, Integer.parseInt(txqtProdutos.getText()) , pedido);
 					valorTotalVenda = valorTotalVenda + produtos.get(cbProduto.getSelectedIndex()).getValorProduto(); //Ele vai salvar o valor do produto na variavel
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

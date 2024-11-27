@@ -48,6 +48,7 @@ CREATE TABLE tbPedido (
 
 CREATE TABLE tbCarrinho (
     idCarrinho INT PRIMARY KEY AUTO_INCREMENT
+    , quantidadeProduto INT
     , idProduto INT , FOREIGN KEY (idProduto) REFERENCES tbProduto(idProduto)
     , idPedido INT , FOREIGN KEY (idPedido) REFERENCES tbPedido(idPedido)
 );

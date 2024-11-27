@@ -22,13 +22,14 @@ private Connection connection;
 		this.connection = new ConnectionFactory().getConnection(); 
 	}
 	
-	public void adicionarCarrinho (ModelarProduto produto, ModelarPedido pedido) throws SQLException {
+	public void adicionarCarrinho (ModelarProduto produto, int quantidadeProduto, ModelarPedido pedido) throws SQLException {
 		try {
-			String tbCarrinho = "INSERT INTO tbCarrinho (idProduto, idPedido) VALUES (?,?)";
+			String tbCarrinho = "INSERT INTO tbCarrinho (quantidadeProduto, idProduto, idPedido) VALUES (?, ?,?)";
 			PreparedStatement stmt = connection.prepareStatement (tbCarrinho);
 			
-			stmt.setInt(1, produto.getIdProduto());
-			stmt.setInt(2, pedido.getContador());
+			stmt.setInt(1, quantidadeProduto);
+			stmt.setInt(2, produto.getIdProduto());
+			stmt.setInt(3, pedido.getContador());
 			
 			stmt.execute();
 			stmt.close();

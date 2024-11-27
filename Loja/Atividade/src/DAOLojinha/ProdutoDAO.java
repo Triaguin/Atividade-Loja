@@ -142,7 +142,7 @@ private Connection connection;
 	
 	public void excluirProduto(ModelarProduto produto)throws SQLException {
 		try {
-			String sql = "DELETE * FROM tbProduto WHERE idProduto = ?";
+			String sql = "DELETE * FROM `tbproduto` WHERE ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setInt(1, produto.getIdProduto());

@@ -14,14 +14,14 @@ public class ExcluirCategoria extends JFrame {
 
 	private JLabel lbCategoria;
 	private JTextField txCategoria;
-	private JButton btCadastrarCategoria;
+	private JButton btExcluirCategoria;
 
 	ModelarCategoria categoria = new ModelarCategoria();
-	CategoriaDAO salvarCategoria = new CategoriaDAO();
+	CategoriaDAO excluirCategoria = new CategoriaDAO();
 	
 	public ExcluirCategoria() {
 
-		setTitle("Cadastrar Categoria");
+		setTitle("Excluir Categoria");
 		setSize(900, 600);
 	    this.setResizable(false);
 		setLayout(null);
@@ -36,30 +36,31 @@ public class ExcluirCategoria extends JFrame {
 		txCategoria.setBounds(350, 260, 200, 35);
 		add(txCategoria);
 
-		btCadastrarCategoria = new JButton();
-		btCadastrarCategoria.setText("Cadastrar");
-		btCadastrarCategoria.setBounds(400, 325, 100, 35);
+		btExcluirCategoria = new JButton();
+		btExcluirCategoria.setText("Excluir");
+		btExcluirCategoria.setBounds(400, 325, 100, 35);
 
-		btCadastrarCategoria.addActionListener(new ActionListener() {
+		btExcluirCategoria.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
 				
 				try {
-					String cg = txCategoria.getText();
-					categoria.setNomeCategoria(cg);
-					salvarCategoria.adicionarCategoria(categoria);
-					JOptionPane.showMessageDialog(null, cadastrarCategoria(cg) ? "Categoria: " + cg + " Cadastrada Com Sucesso" : "Categoria " + cg + " Nao Cadastrada Com Sucesso");
+					int idcategoria = Integer.parseInt(txCategoria.getText());
+					categoria.setIdCategoria(idcategoria);
+					excluirCategoria.excluirCategoria(categoria);
+					JOptionPane.showMessageDialog(null, "Categoria Excluida com sucesso!");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Algo deu errado");
 				}
 				
 				
 			}
 		});
 
-		add(btCadastrarCategoria);
+		add(btExcluirCategoria);
 	}
 
 	public boolean cadastrarCategoria(String categoria) {

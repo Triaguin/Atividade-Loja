@@ -11,6 +11,7 @@ import javax.swing.*;
 import DAOLojinha.CarrinhhoDAO;
 import DAOLojinha.PedidoDAO;
 import DAOLojinha.ProdutoDAO;
+import ModelLojinha.ModelarCarrinho;
 import ModelLojinha.ModelarPedido;
 import ModelLojinha.ModelarProduto;
 public class carrinhoPedido extends JFrame {
@@ -26,6 +27,7 @@ public class carrinhoPedido extends JFrame {
 	CarrinhhoDAO salvarCarrinho = new CarrinhhoDAO();
 	PedidoDAO salvarPedido = new PedidoDAO();
 	ProdutoDAO produtoDAO = new ProdutoDAO();
+	ModelarCarrinho carrinho = new ModelarCarrinho();
 	
 	public carrinhoPedido() throws SQLException {
 		this.setTitle("Carrinho");
@@ -71,13 +73,55 @@ public class carrinhoPedido extends JFrame {
 				
 				int idProduto = (int) produtos.get(cbProduto.getSelectedIndex()).getIdProduto();
 				produto.setIdProduto(idProduto);
-				try {
-					salvarCarrinho.adicionarCarrinho(produto, Integer.parseInt(txqtProdutos.getText()) , pedido);
-					valorTotalVenda = valorTotalVenda + produtos.get(cbProduto.getSelectedIndex()).getValorProduto(); //Ele vai salvar o valor do produto na variavel
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if (produto.getQuantidadeProduto() == 1) {
+					carrinho.setQtItens(Integer.parseInt(txqtProdutos.getText()));
+					valorTotalVenda  = produto.getValorProduto();
+					valorTotalVenda = produto.getQuantidadeProduto() * (valorTotalVenda + produtos.get(cbProduto.getSelectedIndex()).getValorProduto());
+					try {
+						salvarCarrinho.ItensCarrinho(carrinho, produto);
+					} catch (SQLException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+					}
+					pedido.setValorPedido(valorTotalVenda);
+					try {
+						salvarPedido.statusPedido(pedido);
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					try {
+						salvarCarrinho.ItensCarrinho(carrinho, produto);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else {
+					carrinho.setQtItens(Integer.parseInt(txqtProdutos.getText()));
+					valorTotalVenda  = produto.getValorProduto();
+					valorTotalVenda = produto.getQuantidadeProduto() * (valorTotalVenda + produtos.get(cbProduto.getSelectedIndex()).getValorProduto());
+					carrinho.setQtItens(Integer.parseInt(txqtProdutos.getText()));
+					try {
+						salvarCarrinho.ItensCarrinho(carrinho, produto);
+					} catch (SQLException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+					}
+					pedido.setValorPedido(valorTotalVenda);
+					try {
+						salvarPedido.statusPedido(pedido);
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					try {
+						salvarCarrinho.ItensCarrinho(carrinho, produto);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
+				
 				
 			}
 		});

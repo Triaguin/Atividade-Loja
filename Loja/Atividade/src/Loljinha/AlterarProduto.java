@@ -42,7 +42,7 @@ public class AlterarProduto extends JFrame {
 		add(txidProduto);
 		
 		lbnomeProduto = new JLabel();
-		lbnomeProduto.setText("Produto: ");
+		lbnomeProduto.setText("Nome Produto: ");
 		lbnomeProduto.setBounds(350, 155, 70, 15);
 		add(lbnomeProduto);
 		
@@ -51,7 +51,7 @@ public class AlterarProduto extends JFrame {
 		add(txnomeProduto);
 		
 		lbprecoProduto = new JLabel();
-		lbprecoProduto.setText("idProduto: ");
+		lbprecoProduto.setText(" preco Produto: ");
 		lbprecoProduto.setBounds(350, 205, 70, 15);
 		add(lbprecoProduto);
 		
@@ -60,22 +60,24 @@ public class AlterarProduto extends JFrame {
 		add(txprecoProduto);
 		
 		lbqtProduto = new JLabel();
-		lbqtProduto.setText("idProduto: ");
-		lbqtProduto.setBounds(420, 255, 200, 30);
+		lbqtProduto.setText("qt Produto: ");
+		lbqtProduto.setBounds(350, 250, 200, 30);
 		add(lbqtProduto);;
 		
 		txqtProduto = new JTextField();
-		txqtProduto.setBounds(420, 200, 200, 30);
+		txqtProduto.setBounds(420, 255, 200, 30);
 		add(txqtProduto);
 		
 		lbidCategoria = new JLabel();
-		lbidCategoria.setText("idProduto: ");
-		lbidCategoria.setBounds(420, 305, 200, 30);
+		lbidCategoria.setText("id Categoria ");
+		lbidCategoria.setBounds(350, 305, 200, 30);
 		add(lbidCategoria);
 		
 		txidCategoria = new JTextField();
 		txidCategoria.setBounds(420, 300, 200, 30);
 		add(txidCategoria);
+		
+		
 		
 		btalterarProduto = new JButton();
 		btalterarProduto.setText("Alterar");

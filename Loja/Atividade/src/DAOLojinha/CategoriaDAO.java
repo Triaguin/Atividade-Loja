@@ -140,7 +140,7 @@ public class CategoriaDAO {
 	
 	public void excluirCategoria(ModelarCategoria categoria) throws SQLException {
 		
-		String sql = "DELETE*FROM tbCategoria WHERE idCategoria = ?";
+		String sql = "DELETE FROM tbCategoria WHERE idCategoria = ?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			

@@ -36,7 +36,8 @@ CREATE TABLE tbProduto (
     idProduto INT PRIMARY KEY AUTO_INCREMENT
     , nomeProduto VARCHAR (60)
     , precoProduto FLOAT
-    , quantidadeProduto INT
+    , quantidadeProduto INT 
+    , idCategoria INT , FOREIGN KEY (idCategoria) REFERENCES tbCategoria (idCategoria)
 );
 
 CREATE TABLE tbPedido (
@@ -49,8 +50,13 @@ CREATE TABLE tbPedido (
 CREATE TABLE tbCarrinho (
     idCarrinho INT PRIMARY KEY AUTO_INCREMENT
     , quantidadeProduto INT
-    , idProduto INT , FOREIGN KEY (idProduto) REFERENCES tbProduto(idProduto)
     , idPedido INT , FOREIGN KEY (idPedido) REFERENCES tbPedido(idPedido)
 );
+
+CREATE TABLE tbItensCarrinho (
+    idItensCarrinho INT PRIMARY KEY AUTO_INCREMENT
+    , idCarrinho INT , FOREIGN KEY (idCarrinho ) REFERENCES tbCarrinho(idCarrinho)
+    , idProduto INT , FOREIGN KEY (idProduto) REFERENCES tbProduto (idProduto)
+)
 
 

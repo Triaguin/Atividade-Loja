@@ -33,6 +33,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Admin\Desktop\Atividade-Loja\Loja\Exemplo"/>
+			<item value="C:\Users\Admin\Desktop\Atividade-Loja\Loja\Atividade"/>
 			<item value="D:\Leo\Etec\Segundo Ano DS\DS\Atividade-Loja\Loja\Atividade"/>
 			<item value="C:\Users\triag\OneDrive\Documentos\GitHub\Atividade-Loja\Loja\Atividade"/>
 		</list>

@@ -135,7 +135,7 @@ public class ClienteDAO {
 	
 	public void excluirCliente(ModelarCliente cliente) throws SQLException {
 		try {
-			String sql = "DELETE * FROM `tbcliente` WHERE ?";
+			String sql = "DELETE FROM tbCliente WHERE idCliente = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			stmt.setInt(1, cliente.getIdCliente());
